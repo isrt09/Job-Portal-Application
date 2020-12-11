@@ -1,3 +1,4 @@
+<?php require_once('../connection/db.php'); ?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -16,23 +17,34 @@
       <!-- Latest compiled JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <!-- Custom styles for this template -->
-      <link href="css/admin_login.css" rel="stylesheet">
-   </head>
+      <link href="css/admin_login.css" rel="stylesheet">      
+   </head>   
    <body class="text-center">
-      <form class="form-signin">
-         <img class="mb-4" src="../admin/img/bootstrap-solid.svg" alt="" width="72" height="72">
-         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-         <label for="inputEmail" class="sr-only">Email address</label>
-         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-         <label for="inputPassword" class="sr-only">Password</label>
-         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-         <div class="checkbox mb-3">
-            <label>
-            <input type="checkbox" value="remember-me"> Remember me
-            </label>
-         </div>
-         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <form class="form-signin" id="admin_login" name="admin_login" action="admin_login.php" method="post">
+         <img class="mb-4" src="../admin/img/logo.png" alt="" width="72" height="72">
+         <h1 class="h3 mb-3 font-weight-normal"><b>SIGN IN</b></h1>
+         <label for="email" class="sr-only">Email Address</label>
+         <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required autofocus>
+         <label for="pass" class="sr-only">Password</label>
+         <input type="password" name="pass" id="pass" class="form-control" placeholder="Password" required>         
+         <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" id="submit" placeholder="SING IN">
          <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
       </form>
+      <?php 
+   	   if(isset($_POST['submit'])){
+   	   	  $email = $_POST['email'];
+   	   	  $pass  = $_POST['pass'];
+   	   	  $sql   = "SELECT * FROM admin_login WHERE admin_email = '$email' AND admin_password='$pass'";   	   	  
+   	   	  $query = mysqli_query($con,$sql);
+   	   	  $count = mysqli_num_rows($query);
+   	   	  if($count>0){
+   	   	  	 header('location:admin_dashboard.php');
+   	   	  }else{
+   	   	  	 echo "<script>alert('Please try again to login')</script>";
+   	   	  }
+   	   }
+    ?>
    </body>
+
+   <script type="text/javascript" src="js/admin_login.js"></script>    
 </html>
