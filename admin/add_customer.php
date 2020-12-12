@@ -121,56 +121,39 @@
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a href="admin_dashboard.php">Dashboad</a></li>
                       <li class="breadcrumb-item"><a href="customers.php">Customers</a></li>
-                      <li class="breadcrumb-item"><a href="add_customer.php">Add Customer</a></li>        
+                      <li class="breadcrumb-item"><a href="add_customer.php">Add Customer</a></li>          
                    </ol>
                </nav>
                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                  <h1 class="h2">Customers</h1>
+                  <h1 class="h2">Add Customer</h1>
                   <div class="btn-toolbar mb-2 mb-md-0">
                      <div class="btn-group mr-2">
                         
                      </div>
-                     <a class="btn btn-primary" href="add_customer.php">Add Customer</a>                    
-                  </div>                  
+                     <a class="btn btn-primary" href="customers.php">View Customer</a> 
+                   </div>                  
                </div>
-               <table id="example" class="table table-bordered display" style="width:100%">
-                 <thead>
-                     <tr>
-                         <th>SL</th>
-                         <th>Name</th>
-                         <th>User Email</th>
-                         <th>User Name</th>                         
-                         <th>First Name</th>                         
-                         <th>Last Name</th>                         
-                     </tr>
-                 </thead>
-                 <tbody>
-                     <?php 
-                        $sql  = "SELECT * FROM admin_login";
-                        $query= mysqli_query($con,$sql);
-                        $count= mysqli_num_rows($query);
-                        if($count)
-                        {
-                           while($row = mysqli_fetch_assoc($query)){
-                              $id    = $row['admin_id'];
-                              $name  = $row['admin_name'];
-                              $email = $row['admin_email'];
-                              $user  = $row['admin_username'];
-                              $fname = $row['first_name'];
-                              $lname = $row['last_name']; ?>                          
-                              <tr>
-                                  <td><?php echo $id; ?></td>
-                                  <td><?php echo $name; ?></td>
-                                  <td><?php echo $email; ?></td>
-                                  <td><?php echo $user; ?></td> 
-                                  <td><?php echo $fname; ?></td> 
-                                  <td><?php echo $lname; ?></td> 
-                              </tr>  
-                           <?php }
-                        }
-                      ?>                                        
-                 </tbody>                 
-               </table>            
+               <form action="">
+                  <div class="form-group">
+                      <label for="Customer Email">Customer Email</label>
+                      <input type="email" id="Customer Email" name="email" class="form-control" placeholder="Enter Your E-Mail Address ...." autocomplete="off">
+                  </div>
+                  <div class="form-group">
+                      <label for="Customer Email">Customer UserName</label>
+                      <input type="text" id="Customer Email" name="email" class="form-control" placeholder="Enter Your User Name ...." autocomplete="off">
+                  </div>
+                  <div class="form-group">
+                      <label for="Customer Email">Customer First Name </label>
+                      <input type="text" id="Customer Email" name="email" class="form-control" placeholder="Enter Your First Name ...." autocomplete="off">
+                  </div>
+                  <div class="form-group">
+                      <label for="Customer Email">Customer Last Name </label>
+                      <input type="text" id="Customer Email" name="email" class="form-control" placeholder="Enter Your Last Name ...." autocomplete="off">
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" class="btn btn-success" value="SAVE">
+                  </div>
+               </form>       
             </main>            
          </div>
       </div>
