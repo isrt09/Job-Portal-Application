@@ -1,4 +1,7 @@
-<?php require_once('../connection/db.php'); ?>
+<?php 
+	session_start();
+	require_once('../connection/db.php'); 
+?>
 <!doctype html>
 <html lang="en">
    <head>
@@ -38,6 +41,7 @@
    	   	  $query = mysqli_query($con,$sql);
    	   	  $count = mysqli_num_rows($query);
    	   	  if($count>0){
+   	   	  	$_SESSION['email'] = $email;
    	   	  	 header('location:admin_dashboard.php');
    	   	  }else{
    	   	  	 echo "<script>alert('Please try again to login')</script>";
