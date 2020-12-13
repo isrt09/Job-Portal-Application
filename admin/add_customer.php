@@ -24,22 +24,29 @@
                   <form action="" method="post" action="customers.php">
                     <div class="form-group">
                         <label for="Customer Email">Enter Email</label>
-                        <input type="email" id="Customer Email" name="email" class="form-control" placeholder="Enter Your E-Mail Address ...." autocomplete="off">
+                        <input type="email" id="email" name="admin_email" class="form-control" placeholder="Enter Your E-Mail Address ...." autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="Customer Email">Enter UserName</label>
-                        <input type="text" id="Customer Email" name="email" class="form-control" placeholder="Enter Your User Name ...." autocomplete="off">
+                        <input type="text" id="username" name="admin_username" class="form-control" placeholder="Enter Your User Name ...." autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="Customer Email">Enter First Name </label>
-                        <input type="text" id="Customer Email" name="email" class="form-control" placeholder="Enter Your First Name ...." autocomplete="off">
+                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="Enter Your First Name ...." autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="Customer Email">Enter Last Name </label>
-                        <input type="text" id="Customer Email" name="email" class="form-control" placeholder="Enter Your Last Name ...." autocomplete="off">
+                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Enter Your Last Name ...." autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-success btn btn-block" value="SAVE">
+                        <label for="Customer Email">Admin Type </label>
+                        <select name="admin_type" id="admin_type" class="form-control" id="">
+                          <option value="1">Super Admin</option>
+                          <option value="2">Customer Admin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="submit" class="btn btn-success btn btn-block" value="SAVE">
                     </div>
                  </form> 
                </div>                    
@@ -57,6 +64,18 @@
          $(document).ready(function() {
           $('#example').DataTable();
       });
+      </script>
+      <script type="text/javascript">
+         $(document).ready(function(){
+              $("#submit").click(function(){
+                  var email         = $("#email").val();                  
+                  var username      = $("#username").val();                  
+                  var first_name    = $("#first_name").val();                  
+                  var last_name     = $("#last_name").val();                  
+                  var admin_type    = $("#admin_type").val();                  
+                  alert(admin_type);
+              });
+         });
       </script>
    </body>
 </html>
