@@ -21,7 +21,11 @@
                    </div>                  
                </div>
                <div style="background-color: #F2F4F4; padding: 4px" width="50%">
-                  <form action="" method="post" action="customers.php">
+                  <div id="msg"></div>
+                  <form action="" method="post" name="customer_form" id="customer_form">  <div class="form-group">
+                        <label for="Customer Name">Enter Name</label>
+                        <input type="text" id="name" name="admin_name" class="form-control" placeholder="Enter Your Name ...." autocomplete="off">
+                    </div>                
                     <div class="form-group">
                         <label for="Customer Email">Enter Email</label>
                         <input type="email" id="email" name="admin_email" class="form-control" placeholder="Enter Your E-Mail Address ...." autocomplete="off">
@@ -46,7 +50,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="submit" id="submit" class="btn btn-success btn btn-block" value="SAVE">
+                        <input type="submit" id="submit" class="btn btn-success btn btn-block" value="SAVE" name="submit">
                     </div>
                  </form> 
                </div>                    
@@ -54,7 +58,7 @@
          </div>
       </div>
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>      
       <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>      
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
       <script src="js/dashboard.js"></script>
@@ -68,12 +72,21 @@
       <script type="text/javascript">
          $(document).ready(function(){
               $("#submit").click(function(){
+                  var name          = $("#name").val();                  
                   var email         = $("#email").val();                  
                   var username      = $("#username").val();                  
                   var first_name    = $("#first_name").val();                  
                   var last_name     = $("#last_name").val();                  
                   var admin_type    = $("#admin_type").val();                  
-                  alert(admin_type);
+                  var data          = $("#customer_form").serialize();
+                  $.ajax({
+                      type : "POST",
+                      url  : "customer_add.php",
+                      data : data,
+                      success : function(data){
+                         $("#msg").html(data);                                     
+                      }
+                  });
               });
          });
       </script>

@@ -29,6 +29,8 @@
                          <th>User Name</th>                         
                          <th>First Name</th>                         
                          <th>Last Name</th>                         
+                         <th>Admin Type</th>
+                         <th>Action</th>                         
                      </tr>
                  </thead>
                  <tbody>
@@ -44,7 +46,8 @@
                               $email = $row['admin_email'];
                               $user  = $row['admin_username'];
                               $fname = $row['first_name'];
-                              $lname = $row['last_name']; ?>                          
+                              $lname = $row['last_name'];                           
+                              $type  = $row['admin_type']; ?>                          
                               <tr>
                                   <td><?php echo $id; ?></td>
                                   <td><?php echo $name; ?></td>
@@ -52,6 +55,11 @@
                                   <td><?php echo $user; ?></td> 
                                   <td><?php echo $fname; ?></td> 
                                   <td><?php echo $lname; ?></td> 
+                                  <td><?php echo $type; ?></td> 
+                                  <td>
+                                    <a href="customer_edit.php?edit=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    <a href="customer_delete.php?delete=<?php echo $id; ?>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                  </td> 
                               </tr>  
                            <?php }
                         }
